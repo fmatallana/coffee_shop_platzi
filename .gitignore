@@ -6,10 +6,12 @@
 /include/
 /lib/
 /lib64/
+/share/
 /coffee_shop/lib64
 /coffee_shop/bin
 /coffee_shop/include
 /coffee_shop/lib
+/coffee_shop/share
 pyvenv.cfg
 .venv/
 venv/
