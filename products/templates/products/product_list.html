@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Encabezado principal -->
+<div class="flex justify-center py-6">
+    <h1 class="text-3xl font-bold text-white bg-gradient-to-r from-gray-700 to-gray-950 px-3 py-2 rounded mb-3">
+        Lista de Productos
+    </h1>
+</div>
+
+<!-- Grid de productos -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
+    {% for product in product_list %}
+    <!-- Tarjeta del producto -->
+    <a
+        href="#"
+        class="group relative flex flex-col overflow-hidden rounded-lg shadow-lg max-w-sm"
+    >
+        <!-- Imagen del producto -->
+        {% if product.photo %}
+        <img
+            src="{{ product.photo.url }}"
+            alt="{{ product.name }}"
+            class="h-48 w-full object-cover transition duration-500 group-hover:scale-100"
+        >
+        {% endif %}
+
+        <!-- Badge New (esquina flotante) -->
+        <span
+            class="absolute top-3 right-3 bg-orange-400 px-3 py-1.5 text-xs font-bold rounded-full shadow-md"
+        >
+            New
+        </span>
+
+        <!-- Contenido de la tarjeta -->
+        <div class="bg-gray-900 p-2 flex flex-col h-full">
+            <!-- Nombre del producto -->
+            <h3 class="text-lg font-bold text-white bg-gradient-to-r from-gray-950 to-gray-800 px-3 py-2 rounded mb-3">
+                {{ product.name }}
+            </h3>
+
+            <!-- Descripción del producto -->
+            <p class="text-sm text-gray-300 mb-4 flex-grow line-clamp-3">
+                {{ product.description }}
+            </p>
+
+            <!-- Precio del producto -->
+            <p class="text-2xl font-bold text-amber-600">
+                $ {{ product.price }}
+            </p>
+            <form action = "{% url "add_product" %}" class="mt-4", method ="post">
+                {% csrf_token %}
+                <input type ="hidden" name="product" value = "{{product.id}}">
+                <button
+                    class="block w-full rounded-sm bg-yellow-400 p-4
+                           text-sm font-medium transition hover:scale-105"
+                >
+                    agregar pedido
+                </button>
+            </form>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}

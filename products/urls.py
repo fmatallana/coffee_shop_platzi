@@ -1,8 +1,8 @@
 """
-URL configuration for coffee_shop project.
+URL configuration for my_first_proyect project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,14 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+
+from .views import ProductAddAPI, ProductFormView, ProductListAPI, Productlistview
 
 urlpatterns = [
-    path("", include("products.urls")),
-    path("admin/", admin.site.urls),
-    path("usuarios/", include("users.urls")),
-    path("ordenes/", include("orders.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("", Productlistview.as_view(), name="list_product"),
+    path("agregar/", ProductFormView.as_view(), name="add_product"),
+    path("api/", ProductListAPI.as_view(), name="list_product_api"),
+    path("api/", ProductAddAPI.as_view(), name="list_add_api"),
+]

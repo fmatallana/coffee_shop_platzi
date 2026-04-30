@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffe Shop </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>Hola, {{ user.username }}</p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+{% else %}
+    <p>Hola, login</p>
+    <a href="{% url 'login' %}">Iniciar Sesión</a>
+{% endif %}
+    <!-- Fondo principal oscuro -->
+    <div class="min-h-screen bg-gradient-to-r from-gray-900 to-gray-700">
+        <!-- Contenedor principal -->
+        <div class="container mx-auto px-2 text-black">
+    {% block content %}{% endblock content %}
+</div>
+    <a
+    href="{% url 'my_order' %}"
+    class="absolute top-4 right-4 text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800"
+>
+    Mi Pedido
+</a>
+    </div>
+</body>
+</html>

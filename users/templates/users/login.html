@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load tailwind_filters %}
+{% block content %}
+<form action ="" method = "post">
+    <h1 class="text-3xl font-bold text-white bg-gradient-to-r ">iniciar sesion </h1>
+    {% csrf_token %}
+    {{form|crispy}}
+  <button type="submit" class="group relative inline-block text-sm font-medium text-white">
+  <span class="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-white transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></span>
+  <span class="relative block border border-current bg-[#6F4E37] px-8 py-3"> Login </span>
+</button>
+
+</a>
+</form>
+
+{% endblock content %}
