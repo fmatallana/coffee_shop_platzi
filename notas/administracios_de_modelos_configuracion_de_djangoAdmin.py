@@ -13,8 +13,6 @@ existe un comando para crear un super usuario, es decir un usuario que pueda acc
 
 ./manage.py createsuperuser
 
-matallana
-1076737320#Fm
 
 
 djago viene con un sistema de autenticacion incluido, al darle clck en users se puede ver el super usuario que se creo
