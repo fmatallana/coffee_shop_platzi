@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-rbapzxi*k6hd*6!20)to3+g+(x&tc=4x(f^2)n=!f8@4(4jq4s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '172.31.40.254', 'localhost', '127.0.0.1']
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
