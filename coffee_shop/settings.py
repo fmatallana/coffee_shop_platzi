@@ -89,9 +89,6 @@ WSGI_APPLICATION = "coffee_shop.wsgi.application"
 
 DATABASES = {"default": env.db("DJANGO_DB_URL")}
 
-# Fallbacks should be handled by the environment configuration.
-# See: django-environ for `DATABASE_URL` parsing.
-
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
