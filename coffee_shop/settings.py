@@ -28,10 +28,14 @@ SECRET_KEY = "django-insecure-rbapzxi*k6hd*6!20)to3+g+(x&tc=4x(f^2)n=!f8@4(4jq4s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "coffee-shop-prduction.eba-uhdrvkc6.us-east-2.elasticbeanstalk.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Application definition
 
@@ -83,12 +87,10 @@ WSGI_APPLICATION = "coffee_shop.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {"default": env.db("DJANGO_DB_URL")}
+
+# Fallbacks should be handled by the environment configuration.
+# See: django-environ for `DATABASE_URL` parsing.
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -126,7 +128,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = "static"
-
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
